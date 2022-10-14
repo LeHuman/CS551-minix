@@ -73,6 +73,11 @@ int sys_vmctl_reply_mapping(int index, vir_bytes addr);
 int sys_vmctl_set_addrspace(endpoint_t who, phys_bytes ptroot, void
 	*ptroot_v);
 
+int sys_trapcount(unsigned flags, endpoint_t proc_ep);
+int sys_inittrapcount(unsigned flags, endpoint_t proc_ep);
+int sys_msgcount(unsigned flags, endpoint_t proc_ep);
+int sys_initmsgcount(unsigned flags, endpoint_t proc_ep);
+
 
 /* Shorthands for sys_sdevio() system call. */
 #define sys_insb(port, proc_ep, buffer, count) \

@@ -266,6 +266,14 @@
 
 #  define SYS_PADCONF (KERNEL_CALL + 57)	/* sys_padconf() */
 
+#  define SYS_TRAPCOUNT    (KERNEL_CALL + 58)      /* sys_trapcount() */
+
+#  define SYS_INITTRAPCOUNT    (KERNEL_CALL + 59)      /* sys_inittrapcount() */
+
+#  define SYS_MSGCOUNT    (KERNEL_CALL + 60)      /* sys_msgcount() */
+
+#  define SYS_INITMSGCOUNT   (KERNEL_CALL + 61)      /* sys_initmsgcount() */
+
 /* Total */
 #define NR_SYS_CALLS	58	/* number of kernel calls */
 
