@@ -51,6 +51,10 @@ int do_getepinfo(void);
 int do_svrctl(void);
 int do_getsetpriority(void);
 int do_getrusage(void);
+int do_gettrapcount(void);
+int do_getmsgcount(void);
+int do_resettrapcount(void);
+int do_resetmsgcount(void);
 
 /* schedule.c */
 void sched_init(void);

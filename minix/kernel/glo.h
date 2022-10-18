@@ -91,4 +91,9 @@ EXTERN unsigned bkl_succ[CONFIG_MAX_CPUS];
 /* Feature flags */
 EXTERN int minix_feature_flags;
 
+/* trap counts and msg counts for the project */
+
+EXTERN int trap_counts;
+EXTERN int msg_counts;
+
 #endif /* GLO_H */

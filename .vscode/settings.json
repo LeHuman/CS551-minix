@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "cdefs.h": "c",
+        "lib.h": "c",
+        "callnr.h": "c",
+        "system.h": "c"
+    }
+}

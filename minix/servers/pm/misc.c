@@ -445,3 +445,43 @@ do_getrusage(void)
 	return sys_datacopy(SELF, (vir_bytes)&r_usage, who_e,
 	    m_in.m_lc_pm_rusage.addr, (vir_bytes)sizeof(r_usage));
 }
+/*===========================================================================*
+ *				do_gettrapcount				     *
+ *===========================================================================*/
+int
+do_gettrapcount(void){
+  message m;
+  int ret = _kernel_call(SYS_TRAPCOUNT, &m);
+  if(ret >= 0){
+    m_in.m_m1.m1ull1 = m.m_m1.m1ull1;
+  }
+  return ret;
+}
+/*===========================================================================*
+ *				do_getmsgcount				     *
+ *===========================================================================*/
+int
+do_getmsgcount(void){
+  message m;
+  int ret = _kernel_call(SYS_MSGCOUNT, &m);
+  if(ret >= 0){
+    m_in.m_m1.m1ull1 = m.m_m1.m1ull1;
+  }
+  return ret;
+}
+/*===========================================================================*
+ *				do_resettrapcount				     *
+ *===========================================================================*/
+int
+do_resettrapcount(void){
+  message m;
+  return (_kernel_call(SYS_INITTRAPCOUNT, &m));
+}
+/*===========================================================================*
+ *				do_resetmsgcount				     *
+ *===========================================================================*/
+int
+do_resetmsgcount(void){
+  message m;
+  return (_kernel_call(SYS_INITMSGCOUNT, &m));
+}
