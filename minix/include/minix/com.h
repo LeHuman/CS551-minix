@@ -275,7 +275,7 @@
 #  define SYS_INITMSGCOUNT   (KERNEL_CALL + 61)      /* sys_initmsgcount() */
 
 /* Total */
-#define NR_SYS_CALLS	58	/* number of kernel calls */
+#define NR_SYS_CALLS	62	/* number of kernel calls */
 
 #define SYS_CALL_MASK_SIZE BITMAP_CHUNKS(NR_SYS_CALLS)
 
