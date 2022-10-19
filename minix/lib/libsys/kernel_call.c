@@ -3,6 +3,7 @@
 #include <lib.h>
 #include <minix/syslib.h>
 #include <minix/sysutil.h>
+#include <minix/kernel/glo.h>
 
 int _kernel_call(int syscallnr, message *msgptr)
 {
@@ -13,6 +14,7 @@ int _kernel_call(int syscallnr, message *msgptr)
       do_kernel_call(msgptr);
       r = msgptr->m_type;
       if(r != ENOTREADY) {
+          trap_counts ++;
           break;
       }
       tickdelay(t++);

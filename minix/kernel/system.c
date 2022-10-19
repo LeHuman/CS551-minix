@@ -269,7 +269,7 @@ void system_init(void)
 
   /* New system calls for project */
   map(SYS_TRAPCOUNT, do_trapcount);	/* count and return the number of traps */
-  map(SYS_INITTRAOCOUNT, do_inittrapcount);	/* reset the trap counter */
+  map(SYS_INITTRAPCOUNT, do_inittrapcount);	/* reset the trap counter */
   map(SYS_MSGCOUNT, do_msgcount);	/* count and return the number of messages */
   map(SYS_INITMSGCOUNT, do_inittrapcount);	/* reset the message counter */
 

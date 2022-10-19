@@ -7,5 +7,6 @@
   *===========================================================================*/
 int do_trapcount(struct proc *caller_ptr, message *m_ptr)
 {
-      return(OK);
+    m_ptr->m_m1.m1ull1 = trap_counts; 
+    return(OK);
 }

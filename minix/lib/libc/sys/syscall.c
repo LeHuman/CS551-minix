@@ -1,6 +1,7 @@
 #include <sys/cdefs.h>
 #include <lib.h>
 #include "namespace.h"
+#include <minix/kernel/glo.h>
 
 #ifdef __weak_alias
 __weak_alias(syscall, _syscall)
@@ -12,6 +13,7 @@ int _syscall(endpoint_t who, int syscallnr, message *msgptr)
 
   msgptr->m_type = syscallnr;
   status = ipc_sendrec(who, msgptr);
+  msg_counts ++;
   if (status != 0) {
 	/* 'ipc_sendrec' itself failed. */
 	/* XXX - strerror doesn't know all the codes */
