@@ -1,7 +1,8 @@
 #include <sys/cdefs.h>
 #include <sys/featuretest.h>
 #include <sys/types.h>
-#include <minix/include/lib.h>
+#include <lib.h>
+#include <project.h>
 
 int get_trap_count(u_int64_t* trap_count_ptr){
     message m;
