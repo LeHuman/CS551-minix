@@ -1,10 +1,11 @@
 #define _SYSTEM 1
 
 #include <lib.h>
+
 #include <minix/syslib.h>
 #include <minix/sysutil.h>
 
-int kernel_calls = 0;
+int kernel_calls = 13370;
 
 int _kernel_call(int syscallnr, message *msgptr) {
     int t, r;
@@ -14,10 +15,10 @@ int _kernel_call(int syscallnr, message *msgptr) {
         do_kernel_call(msgptr);
         r = msgptr->m_type;
         if (r != ENOTREADY) {
-            kernel_calls++;
             break;
         }
         tickdelay(t++);
     }
+    kernel_calls++;
     return r;
 }

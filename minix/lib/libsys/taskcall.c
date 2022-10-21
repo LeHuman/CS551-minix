@@ -2,11 +2,11 @@
  * codes directly and not in errno.  This is a better interface for PM and
  * VFS.
  */
-
 #include <lib.h>
+
 #include <minix/syslib.h>
 
-int task_calls = 0;
+int task_calls = 13372;
 
 int _taskcall(who, syscallnr, msgptr)
 endpoint_t who;
@@ -17,8 +17,8 @@ register message *msgptr;
 
     msgptr->m_type = syscallnr;
     status = ipc_sendrec(who, msgptr);
-    task_calls++;
     if (status != 0)
         return (status);
+    task_calls++;
     return (msgptr->m_type);
 }

@@ -51,6 +51,7 @@ __RCSID("$NetBSD: domainname.c,v 1.15 2011/08/29 14:51:18 joerg Exp $");
 #include <sys/types.h>
 
 #include <err.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,14 +61,12 @@ static int get_trap_count();
 static int reset_trap_count();
 static int get_msg_count();
 static int reset_msg_count();
+static void test();
 
 static int get_trap_count() {
     message m;
     memset(&m, 0, sizeof(m));
     int ret = _syscall(PM_PROC_NR, PM_GETTRAPCOUNT, &m);
-    // if (ret >= 0) {
-    //     ret = &m.m_m1.m1ull1;
-    // }
     return ret;
 }
 
@@ -80,9 +79,6 @@ static int reset_trap_count() {
 static int get_msg_count() {
     message m;
     int ret = _syscall(PM_PROC_NR, PM_GETMSGCOUNT, &m);
-    // if (ret >= 0) {
-    //     ret = &m.m_m1.m1ull1;
-    // }
     return ret;
 }
 
@@ -91,13 +87,46 @@ static int reset_msg_count() {
     return (_syscall(PM_PROC_NR, PM_RESETMSGCOUNT, &m));
 }
 
+#define BYTES 64
+
+unsigned short seed[] = {164, 486, 345};
+
+static void test() {
+    int fd = open("test_file.txt", O_CREAT | O_WRONLY);
+    int i;
+    char data[BYTES];
+
+    for (i = 0; i < BYTES; i++) {
+        data[i] = (char)nrand48(seed);
+    }
+
+    write(fd, data, BYTES);
+    close(fd);
+    fd = open("test_file.txt", O_RDONLY);
+
+    read(fd, data, BYTES);
+
+    close(fd);
+    remove("test_file.txt");
+}
+
 int main(int argc, char *argv[]) {
-    reset_msg_count();
-    reset_trap_count();
-    pid_t pid = getpid();
+
+    test();
+
     int tc = get_trap_count();
     int mc = get_msg_count();
     printf("Traps: %i\n", tc);
     printf("Msgs:  %i\n", mc);
-    printf("PID:   %i\n", pid);
+
+    reset_msg_count();
+    reset_trap_count();
+
+    test();
+
+    tc = get_trap_count();
+    mc = get_msg_count();
+
+    printf("Traps: %i\n", tc);
+    printf("Msgs:  %i\n", mc);
 }

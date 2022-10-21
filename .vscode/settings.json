@@ -14,6 +14,18 @@
         "com.h": "c",
         "compare": "c",
         "system.h": "c",
-        "pm.h": "c"
+        "pm.h": "c",
+        "signal.h": "c",
+        "__config": "c",
+        "fstream": "c",
+        "locale": "c",
+        "*.inc": "c",
+        "atomic": "c",
+        "*.tcc": "c",
+        "sstream": "c",
+        "regex": "c",
+        "__locale": "c",
+        "thread": "c",
+        "fcntl.h": "c"
     }
 }

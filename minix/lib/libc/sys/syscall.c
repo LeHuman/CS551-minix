@@ -1,9 +1,9 @@
+#include <lib.h>
 
 #include "namespace.h"
-#include <lib.h>
 #include <sys/cdefs.h>
 
-int sys_calls = 0;
+int sys_calls = 13371;
 
 #ifdef __weak_alias
 __weak_alias(syscall, _syscall)
@@ -14,7 +14,6 @@ __weak_alias(syscall, _syscall)
 
     msgptr->m_type = syscallnr;
     status = ipc_sendrec(who, msgptr);
-    sys_calls++;
     if (status != 0) {
         /* 'ipc_sendrec' itself failed. */
         /* XXX - strerror doesn't know all the codes */
@@ -24,5 +23,6 @@ __weak_alias(syscall, _syscall)
         errno = -msgptr->m_type;
         return (-1);
     }
+    sys_calls++;
     return (msgptr->m_type);
 }
