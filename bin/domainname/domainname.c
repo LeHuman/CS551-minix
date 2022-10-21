@@ -43,7 +43,12 @@ __RCSID("$NetBSD: domainname.c,v 1.15 2011/08/29 14:51:18 joerg Exp $");
 #endif
 #endif /* not lint */
 
+#include <lib.h>
+
+#include <sys/cdefs.h>
+#include <sys/featuretest.h>
 #include <sys/param.h>
+#include <sys/types.h>
 
 #include <err.h>
 #include <stdio.h>
@@ -51,45 +56,48 @@ __RCSID("$NetBSD: domainname.c,v 1.15 2011/08/29 14:51:18 joerg Exp $");
 #include <string.h>
 #include <unistd.h>
 
-__dead static void usage(void);
+static int get_trap_count();
+static int reset_trap_count();
+static int get_msg_count();
+static int reset_msg_count();
 
-int
-main(int argc, char *argv[])
-{
-	int ch;
-	char domainname[MAXHOSTNAMELEN];
-
-	setprogname(argv[0]);
-
-	while ((ch = getopt(argc, argv, "")) != -1) {
-		switch (ch) {
-		case '?':
-		default:
-			usage();
-			/* NOTREACHED */
-		}
-	}
-	argc -= optind;
-	argv += optind;
-
-	if (argc > 1)
-		usage();
-
-	if (*argv) {
-		if (setdomainname(*argv, strlen(*argv)))
-			err(1, "setdomainname");
-	} else {
-		if (getdomainname(domainname, sizeof(domainname)))
-			err(1, "getdomainname");
-		(void)printf("%s\n", domainname);
-	}
-	exit(EXIT_SUCCESS);
-	/* NOTREACHED */
+static int get_trap_count() {
+    message m;
+    memset(&m, 0, sizeof(m));
+    int ret = _syscall(PM_PROC_NR, PM_GETTRAPCOUNT, &m);
+    // if (ret >= 0) {
+    //     ret = &m.m_m1.m1ull1;
+    // }
+    return ret;
 }
 
-static void
-usage(void)
-{
-	(void)fprintf(stderr, "usage: %s [name-of-domain]\n", getprogname());
-	exit(EXIT_FAILURE);
+static int reset_trap_count() {
+    message m;
+    memset(&m, 0, sizeof(m));
+    return (_syscall(PM_PROC_NR, PM_RESETTRAPCOUNT, &m));
+}
+
+static int get_msg_count() {
+    message m;
+    int ret = _syscall(PM_PROC_NR, PM_GETMSGCOUNT, &m);
+    // if (ret >= 0) {
+    //     ret = &m.m_m1.m1ull1;
+    // }
+    return ret;
+}
+
+static int reset_msg_count() {
+    message m;
+    return (_syscall(PM_PROC_NR, PM_RESETMSGCOUNT, &m));
+}
+
+int main(int argc, char *argv[]) {
+    reset_msg_count();
+    reset_trap_count();
+    pid_t pid = getpid();
+    int tc = get_trap_count();
+    int mc = get_msg_count();
+    printf("Traps: %i\n", tc);
+    printf("Msgs:  %i\n", mc);
+    printf("PID:   %i\n", pid);
 }

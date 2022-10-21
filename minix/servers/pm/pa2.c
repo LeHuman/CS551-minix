@@ -14,7 +14,6 @@
 int do_pm_gettrapcount(void) {
     uint64_t cnt;
     sys_gettrapcount(&cnt);
-    mp->mp_reply.m_m1.m1ull1 = 7357;
     return (int)cnt;
 }
 /*===========================================================================*
@@ -23,7 +22,6 @@ int do_pm_gettrapcount(void) {
 int do_pm_getmsgcount(void) {
     uint64_t cnt;
     sys_getmsgcount(&cnt);
-    mp->mp_reply.m_m1.m1ull1 = 7357;
     return (int)cnt;
 }
 /*===========================================================================*

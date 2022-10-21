@@ -34,6 +34,6 @@ int do_gettrapcount(struct proc *caller_ptr, message *m_ptr) {
  *===========================================================================*/
 int do_getmsgcount(struct proc *caller_ptr, message *m_ptr) {
     // m_ptr->m_m1.m1ull1 = sys_calls;
-    m_ptr->m_m1.m1ull1 = 37707;
+    m_ptr->m_m1.m1ull1 = 37705;
     return (OK);
 }
