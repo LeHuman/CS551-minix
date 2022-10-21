@@ -206,9 +206,9 @@ int do_padconf(struct proc * caller, message *m_ptr);
 #define do_padconf NULL
 #endif
 
-int do_trapcount(struct proc * caller, message *m_ptr);
+int do_gettrapcount(struct proc * caller, message *m_ptr);
 int do_inittrapcount(struct proc * caller, message *m_ptr);
-int do_msgcount(struct proc * caller, message *m_ptr);
+int do_getmsgcount(struct proc * caller, message *m_ptr);
 int do_initmsgcount(struct proc * caller, message *m_ptr);
 
 #endif	/* SYSTEM_H */

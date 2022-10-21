@@ -8,6 +8,12 @@
         "kernel.h": "c",
         "endpoint.h": "c",
         "const.h": "c",
-        "sysutil.h": "c"
+        "sysutil.h": "c",
+        "unistd.h": "c",
+        "system_error": "c",
+        "com.h": "c",
+        "compare": "c",
+        "system.h": "c",
+        "pm.h": "c"
     }
 }

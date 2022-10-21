@@ -94,3 +94,9 @@ int pm_isokendpt(int ep, int *proc);
 void tell_vfs(struct mproc *rmp, message *m_ptr);
 void set_rusage_times(struct rusage *r_usage, clock_t user_time,
 	clock_t sys_time);
+
+/* pa2.c */
+int do_pm_gettrapcount(void);
+int do_pm_getmsgcount(void);
+int do_pm_resettrapcount(void);
+int do_pm_resetmsgcount(void);

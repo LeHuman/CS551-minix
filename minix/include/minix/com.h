@@ -267,9 +267,9 @@
 #  define SYS_PADCONF (KERNEL_CALL + 57)	/* sys_padconf() */
 
 /* PA 2 */
-#  define SYS_TRAPCOUNT    (KERNEL_CALL + 58)      /* sys_trapcount() */
+#  define SYS_GETTRAPCOUNT    (KERNEL_CALL + 58)      /* sys_gettrapcount() */
 #  define SYS_INITTRAPCOUNT    (KERNEL_CALL + 59)      /* sys_inittrapcount() */
-#  define SYS_MSGCOUNT    (KERNEL_CALL + 60)      /* sys_msgcount() */
+#  define SYS_GETMSGCOUNT    (KERNEL_CALL + 60)      /* sys_getmsgcount() */
 #  define SYS_INITMSGCOUNT   (KERNEL_CALL + 61)      /* sys_initmsgcount() */
 
 

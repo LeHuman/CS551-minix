@@ -22,11 +22,6 @@
 #include <minix/endpoint.h>
 #include <minix/ipc.h>
 
-/* PA 2 */
-extern int kernel_calls;
-extern int task_calls;
-extern int sys_calls;
-
 struct minix_kerninfo *get_minix_kerninfo(void);
 
 vir_bytes minix_get_user_sp(void);

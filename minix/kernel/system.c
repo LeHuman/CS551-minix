@@ -268,10 +268,10 @@ void system_init(void)
   map(SYS_SCHEDCTL, do_schedctl);	/* change process scheduler */
 
   /* PA 2 */
+  map(SYS_GETTRAPCOUNT, do_gettrapcount);	/* count and return the number of traps */
   map(SYS_INITTRAPCOUNT, do_inittrapcount);	/* reset the trap counter */
-  map(SYS_TRAPCOUNT, do_trapcount);	/* count and return the number of traps */
+  map(SYS_GETMSGCOUNT, do_getmsgcount);	/* count and return the number of messages */
   map(SYS_INITMSGCOUNT, do_initmsgcount);	/* reset the message counter */
-  map(SYS_MSGCOUNT, do_msgcount);	/* count and return the number of messages */
 
 }
 /*===========================================================================*

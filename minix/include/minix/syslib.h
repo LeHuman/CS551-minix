@@ -294,10 +294,10 @@ int closenb(int fd);
 int proceventmask(unsigned int mask);
 
 /* PA 2 */
-int sys_trapcount(unsigned flags, endpoint_t proc_ep);
-int sys_inittrapcount(unsigned flags, endpoint_t proc_ep);
-int sys_msgcount(unsigned flags, endpoint_t proc_ep);
-int sys_initmsgcount(unsigned flags, endpoint_t proc_ep);
+int sys_gettrapcount(uint64_t* counter);
+int sys_inittrapcount(void);
+int sys_getmsgcount(uint64_t* counter);
+int sys_initmsgcount(void);
 
 #endif /* _SYSLIB_H */
 
