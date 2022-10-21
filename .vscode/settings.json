@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.html": "html",
+        "*.def": "c",
+        "syslib.h": "c",
+        "glo.h": "c",
+        "lib.h": "c",
+        "kernel.h": "c",
+        "endpoint.h": "c",
+        "const.h": "c",
+        "sysutil.h": "c"
+    }
+}

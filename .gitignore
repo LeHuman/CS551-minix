@@ -5,7 +5,7 @@ cscope.*
 *~
 *.orig
 *.diff
-*.patch
+# *.patch
 *.rej
 *.[1-9].gz
 *.o
@@ -14,6 +14,8 @@ cscope.*
 lib*.so*
 *.a
 *.so.*
+*.img
+*.iso
 *.d
 !etc/*.d
 .depend
