@@ -267,6 +267,12 @@ void system_init(void)
   map(SYS_SCHEDULE, do_schedule);	/* reschedule a process */
   map(SYS_SCHEDCTL, do_schedctl);	/* change process scheduler */
 
+  /* PA 2 */
+  map(SYS_INITTRAPCOUNT, do_inittrapcount);	/* reset the trap counter */
+  map(SYS_TRAPCOUNT, do_trapcount);	/* count and return the number of traps */
+  map(SYS_INITMSGCOUNT, do_initmsgcount);	/* reset the message counter */
+  map(SYS_MSGCOUNT, do_msgcount);	/* count and return the number of messages */
+
 }
 /*===========================================================================*
  *				get_priv				     *

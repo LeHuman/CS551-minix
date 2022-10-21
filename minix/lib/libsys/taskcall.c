@@ -6,15 +6,19 @@
 #include <lib.h>
 #include <minix/syslib.h>
 
+int task_calls = 0;
+
 int _taskcall(who, syscallnr, msgptr)
 endpoint_t who;
 int syscallnr;
 register message *msgptr;
 {
-  int status;
+    int status;
 
-  msgptr->m_type = syscallnr;
-  status = ipc_sendrec(who, msgptr);
-  if (status != 0) return(status);
-  return(msgptr->m_type);
+    msgptr->m_type = syscallnr;
+    status = ipc_sendrec(who, msgptr);
+    task_calls++;
+    if (status != 0)
+        return (status);
+    return (msgptr->m_type);
 }

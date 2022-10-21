@@ -293,5 +293,11 @@ int closenb(int fd);
 #define PROC_EVENT_SIGNAL	0x02	/* process has caught signal */
 int proceventmask(unsigned int mask);
 
+/* PA 2 */
+int sys_trapcount(unsigned flags, endpoint_t proc_ep);
+int sys_inittrapcount(unsigned flags, endpoint_t proc_ep);
+int sys_msgcount(unsigned flags, endpoint_t proc_ep);
+int sys_initmsgcount(unsigned flags, endpoint_t proc_ep);
+
 #endif /* _SYSLIB_H */
 
