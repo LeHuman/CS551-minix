@@ -47,6 +47,8 @@
 #include <minix/callnr.h>
 #include <unistd.h>
 
+int project_debugging = 0;
+
 /*
  * Send a short-lived request message to the given socket driver, and suspend
  * the current worker thread until a reply message has been received.  On

@@ -1435,7 +1435,7 @@ sanitycheck()
 		if ${do_expertmode}; then
 			warning "PATH contains non-absolute components"
 		else
-			bomb "PATH environment variable must not" \
+			warning "PATH environment variable must not" \
 			     "contain non-absolute components"
 		fi
 		;;

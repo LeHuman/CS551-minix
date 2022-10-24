@@ -68,11 +68,11 @@ int req_breadwrite(endpoint_t fs_e, endpoint_t user_e, dev_t dev, off_t pos,
 {
 	int r;
  
-  if(project_debugging)
-    printf("Executing the req_breadwrite function in request.c\n");
+    if(project_debugging)
+        printf("Executing the req_breadwrite function in request.c\n");
+
 	r = req_breadwrite_actual(fs_e, user_e, dev, pos, num_of_bytes,
-		use
-  #endifr_addr, rw_flag, new_pos, cum_iop, CPF_TRY);
+		user_addr, rw_flag, new_pos, cum_iop, CPF_TRY);
 
 	if (r == ERESTART) {
 		if((r=vm_vfs_procctl_handlemem(user_e, user_addr, num_of_bytes,
@@ -890,8 +890,7 @@ int req_readwrite(endpoint_t fs_e, ino_t inode_nr, off_t pos,
   if(project_debugging)
     printf("Executing the req_readwrite function in request.c\n");
 
-	r = req_readwrite_actual(fs_e, inode_nr, po
-#endifs, rw_flag, user_e,
+    r = req_readwrite_actual(fs_e, inode_nr, pos, rw_flag, user_e,
 		user_addr, num_of_bytes, new_posp, cum_iop, CPF_TRY);
 
 	if (r == ERESTART) {
