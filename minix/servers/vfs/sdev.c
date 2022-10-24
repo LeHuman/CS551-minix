@@ -342,6 +342,8 @@ sdev_readwrite(dev_t dev, vir_bytes data_buf, size_t data_len,
 	unsigned int addr_len, int flags, int rw_flag, int filp_flags,
 	vir_bytes user_buf)
 {
+	printf("Executing the sdev_readwrite function in sdev.c\n");
+
 	struct smap *sp;
 	sockid_t sock_id;
 	cp_grant_id_t data_grant, ctl_grant, addr_grant;

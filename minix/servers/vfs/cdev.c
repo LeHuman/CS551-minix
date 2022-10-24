@@ -280,6 +280,8 @@ int
 cdev_io(int op, dev_t dev, endpoint_t proc_e, vir_bytes buf, off_t pos,
 	unsigned long bytes, int flags)
 {
+	printf("Executing the cdev_io function in cdev.c\n");
+
 	devminor_t minor_dev;
 	struct dmap *dp;
 	message dev_mess;

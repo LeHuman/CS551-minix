@@ -66,7 +66,7 @@ int req_breadwrite(endpoint_t fs_e, endpoint_t user_e, dev_t dev, off_t pos,
         off_t *new_pos, size_t *cum_iop)
 {
 	int r;
-
+  printf("Executing the req_breadwrite function in request.c\n");
 	r = req_breadwrite_actual(fs_e, user_e, dev, pos, num_of_bytes,
 		user_addr, rw_flag, new_pos, cum_iop, CPF_TRY);
 
@@ -840,6 +840,7 @@ static int req_readwrite_actual(endpoint_t fs_e, ino_t inode_nr, off_t pos,
   int r;
   cp_grant_id_t grant_id;
   message m;
+  printf("Executing the req_readwrite_actual function in request.c\n");
 
   vmp = find_vmnt(fs_e);
 
@@ -880,6 +881,7 @@ int req_readwrite(endpoint_t fs_e, ino_t inode_nr, off_t pos,
 	unsigned int num_of_bytes, off_t *new_posp, size_t *cum_iop)
 {
 	int r;
+  printf("Executing the req_readwrite function in request.c\n");
 
 	r = req_readwrite_actual(fs_e, inode_nr, pos, rw_flag, user_e,
 		user_addr, num_of_bytes, new_posp, cum_iop, CPF_TRY);

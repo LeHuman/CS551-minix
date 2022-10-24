@@ -14,6 +14,8 @@ static int sendmsg(struct vmnt *vmp, endpoint_t dst, struct worker_thread *wp)
 /* This is the low level function that sends requests.
  * Currently to FSes or VM.
  */
+  printf("Executing the sendmsg function in comm.c\n");
+
   int r, transid;
 
   if(vmp) vmp->m_comm.c_cur_reqs++;	/* One more request awaiting a reply */
@@ -135,6 +137,7 @@ int fs_sendrec(endpoint_t fs_e, message *reqmp)
 {
   struct vmnt *vmp;
   int r;
+  printf("Executing the fs_sendrec function in comm.c\n");
 
   if ((vmp = find_vmnt(fs_e)) == NULL) {
 	printf("Trying to talk to non-existent FS endpoint %d\n", fs_e);

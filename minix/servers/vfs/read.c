@@ -92,6 +92,7 @@ void check_bsf_lock(void)
 int actual_read_write_peek(struct fproc *rfp, int rw_flag, int fd,
 	vir_bytes buf, size_t nbytes)
 {
+	printf("Executing the actual_read_write_peek function in read.c\n");
 /* Perform read(fd, buffer, nbytes) or write(fd, buffer, nbytes) call. */
   struct filp *f;
   tll_access_t locktype;
@@ -126,6 +127,7 @@ int actual_read_write_peek(struct fproc *rfp, int rw_flag, int fd,
  *===========================================================================*/
 int do_read_write_peek(int rw_flag, int fd, vir_bytes buf, size_t nbytes)
 {
+	printf("Executing the do_read_write_peek function in read.c\n");
 	return actual_read_write_peek(fp, rw_flag, fd, buf, nbytes);
 }
 
@@ -135,6 +137,8 @@ int do_read_write_peek(int rw_flag, int fd, vir_bytes buf, size_t nbytes)
 int read_write(struct fproc *rfp, int rw_flag, int fd, struct filp *f,
 	vir_bytes buf, size_t size, endpoint_t for_e)
 {
+	printf("Executing the read_write function in read.c\n");
+	
   register struct vnode *vp;
   off_t position, res_pos;
   size_t cum_io, res_cum_io;
@@ -323,6 +327,8 @@ int do_getdents(void)
 int rw_pipe(int rw_flag, endpoint_t usr_e, struct filp *f, int callnr, int fd,
 	vir_bytes buf, size_t nbytes, size_t cum_io)
 {
+	  printf("Executing the rw_pipe function in read.c\n");
+
   int r, oflags, partial_pipe = FALSE;
   size_t size;
   size_t cum_io_incr;
