@@ -8,13 +8,15 @@
 #include "fs.h"
 #include "file.h"
 #include <minix/callnr.h>
+#include <unistd.h>
 
 /*===========================================================================*
  *				do_write				     *
  *===========================================================================*/
 int do_write(void)
 {
-  printf("Executing the do_write function in write.c\n");
+  if(project_debugging)
+    printf("Executing the do_write function in write.c\n");
 /* Perform the write(fd, buffer, nbytes) system call. */
 
   /* See the comment in do_read(). */

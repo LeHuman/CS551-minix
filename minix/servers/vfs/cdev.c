@@ -25,6 +25,7 @@
 #include <fcntl.h>
 #include <sys/ttycom.h>
 #include <assert.h>
+#include <unistd.h>
 
 /*
  * Map the given device number to a real device number, remapping /dev/tty to
@@ -280,7 +281,8 @@ int
 cdev_io(int op, dev_t dev, endpoint_t proc_e, vir_bytes buf, off_t pos,
 	unsigned long bytes, int flags)
 {
-	printf("Executing the cdev_io function in cdev.c\n");
+	if(project_debugging)
+		printf("Executing the cdev_io function in cdev.c\n");
 
 	devminor_t minor_dev;
 	struct dmap *dp;

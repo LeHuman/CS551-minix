@@ -26,6 +26,8 @@
         "regex": "c",
         "__locale": "c",
         "thread": "c",
-        "fcntl.h": "c"
+        "fcntl.h": "c",
+        "callnr.h": "c",
+        "fs.h": "c"
     }
 }

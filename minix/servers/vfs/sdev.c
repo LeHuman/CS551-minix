@@ -45,6 +45,7 @@
 #include "fs.h"
 #include <sys/socket.h>
 #include <minix/callnr.h>
+#include <unistd.h>
 
 /*
  * Send a short-lived request message to the given socket driver, and suspend
@@ -342,7 +343,8 @@ sdev_readwrite(dev_t dev, vir_bytes data_buf, size_t data_len,
 	unsigned int addr_len, int flags, int rw_flag, int filp_flags,
 	vir_bytes user_buf)
 {
-	printf("Executing the sdev_readwrite function in sdev.c\n");
+	if(project_debugging)
+		printf("Executing the sdev_readwrite function in sdev.c\n");
 
 	struct smap *sp;
 	sockid_t sock_id;
