@@ -44,6 +44,8 @@
         "queue": "c",
         "stack": "c",
         "random": "c",
-        "pa2.h": "c"
+        "pa2.h": "c",
+        "u64.h": "c",
+        "sigtypes.h": "c"
     }
 }

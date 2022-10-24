@@ -29,8 +29,8 @@
  * SUCH DAMAGE.
  */
 
-#include <sys/pa2.h>
 #include <sys/cdefs.h>
+#include <sys/pa2.h>
 #ifndef lint
 __COPYRIGHT("@(#) Copyright (c) 1988, 1993\
  The Regents of the University of California.  All rights reserved.");
@@ -51,30 +51,30 @@ __RCSID("$NetBSD: domainname.c,v 1.15 2011/08/29 14:51:18 joerg Exp $");
 #include <string.h>
 #include <unistd.h>
 
-// static void test();
+static void test();
 
 #define BYTES 64
 
 unsigned short seed[] = {164, 486, 345};
 
-// static void test() {
-//     int fd = open("test_file.txt", O_CREAT | O_WRONLY);
-//     int i;
-//     char data[BYTES];
+static void test() {
+    int fd = open("test_file.txt", O_CREAT | O_WRONLY);
+    int i;
+    char data[BYTES];
 
-//     for (i = 0; i < BYTES; i++) {
-//         data[i] = (char)nrand48(seed);
-//     }
+    for (i = 0; i < BYTES; i++) {
+        data[i] = (char)nrand48(seed);
+    }
 
-//     write(fd, data, BYTES);
-//     close(fd);
-//     fd = open("test_file.txt", O_RDONLY);
+    write(fd, data, BYTES);
+    close(fd);
+    fd = open("test_file.txt", O_RDONLY);
 
-//     read(fd, data, BYTES);
+    read(fd, data, BYTES);
 
-//     close(fd);
-//     remove("test_file.txt");
-// }
+    close(fd);
+    remove("test_file.txt");
+}
 
 // #define FATAL(...)                               \
 //     do {                                         \
@@ -164,6 +164,8 @@ int main(int argc, char *argv[]) {
     if (argc >= 2) {
         reset_msg_count();
         reset_trap_count();
+    } else if (argc >= 3) {
+        test();
     } else {
         int tc = get_trap_count();
         int mc = get_msg_count();
