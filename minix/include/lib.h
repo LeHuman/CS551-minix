@@ -25,6 +25,7 @@
 EXTERN int kernel_calls;
 EXTERN int sys_calls;
 EXTERN int task_calls;
+EXTERN int enable_counter;
 
 struct minix_kerninfo *get_minix_kerninfo(void);
 

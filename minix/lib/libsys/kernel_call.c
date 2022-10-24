@@ -4,12 +4,18 @@
 
 #include <minix/syslib.h>
 #include <minix/sysutil.h>
+#include <stdio.h>
 
-int kernel_calls = 13370;
+int enable_counter = 0;
+int kernel_calls = 0;
 
 int _kernel_call(int syscallnr, message *msgptr) {
     int t, r;
     t = 1;
+    if (enable_counter) {
+        kernel_calls++;
+    }
+
     while (1) {
         msgptr->m_type = syscallnr;
         do_kernel_call(msgptr);
@@ -19,6 +25,5 @@ int _kernel_call(int syscallnr, message *msgptr) {
         }
         tickdelay(t++);
     }
-    kernel_calls++;
     return r;
 }

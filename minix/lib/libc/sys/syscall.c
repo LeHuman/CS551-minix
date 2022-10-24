@@ -13,6 +13,7 @@ __weak_alias(syscall, _syscall)
     int status;
 
     msgptr->m_type = syscallnr;
+    sys_calls++;
     status = ipc_sendrec(who, msgptr);
     if (status != 0) {
         /* 'ipc_sendrec' itself failed. */
@@ -23,6 +24,5 @@ __weak_alias(syscall, _syscall)
         errno = -msgptr->m_type;
         return (-1);
     }
-    sys_calls++;
     return (msgptr->m_type);
 }

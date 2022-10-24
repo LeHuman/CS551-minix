@@ -31,6 +31,7 @@ int do_pm_getmsgcount(void) {
  *				do_resettrapcount				     *
  *===========================================================================*/
 int do_pm_resettrapcount(void) {
+    enable_counter = 1;
     kernel_calls = 0;
     return 0;
     // return sys_inittrapcount();
