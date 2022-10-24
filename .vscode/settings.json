@@ -27,7 +27,23 @@
         "__locale": "c",
         "thread": "c",
         "fcntl.h": "c",
-        "callnr.h": "c",
-        "fs.h": "c"
+        "string.h": "c",
+        "cstring": "c",
+        "typeinfo": "c",
+        "ptrace.h": "c",
+        "ipc.h": "c",
+        "istream": "c",
+        "__hash_table": "c",
+        "__tree": "c",
+        "algorithm": "c",
+        "forward_list": "c",
+        "list": "c",
+        "ostream": "c",
+        "stdio.h": "c",
+        "assert.h": "c",
+        "queue": "c",
+        "stack": "c",
+        "random": "c",
+        "pa2.h": "c"
     }
 }
