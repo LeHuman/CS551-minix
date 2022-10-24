@@ -1693,6 +1693,7 @@
 ./usr/include/sys/mutex.h                               minix-comp
 ./usr/include/sys/namei.h                               minix-comp
 ./usr/include/sys/null.h                                minix-comp
+./usr/include/sys/pa2.h			    					minix-comp
 ./usr/include/sys/param.h                               minix-comp
 ./usr/include/sys/pcu.h                                 minix-comp
 ./usr/include/sys/pipe.h                                minix-comp
