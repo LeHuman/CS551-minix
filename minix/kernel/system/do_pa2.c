@@ -2,13 +2,13 @@
 
 #include "kernel/system.h"
 #include <minix/endpoint.h>
+#include <minix/ipc.h>
 
 /*===========================================================================*
  *                                do_initmsgcount                            *
  *===========================================================================*/
 int do_initmsgcount(struct proc *caller_ptr, message *m_ptr) {
-    // sys_calls = 0;
-    // task_calls = 0;
+    msg_calls = 0;
     return (OK);
 }
 
@@ -16,7 +16,7 @@ int do_initmsgcount(struct proc *caller_ptr, message *m_ptr) {
  *                                do_inittrapcount                           *
  *===========================================================================*/
 int do_inittrapcount(struct proc *caller_ptr, message *m_ptr) {
-    // kernel_calls = 0;
+    kernel_calls = 0;
     return (OK);
 }
 
@@ -24,8 +24,7 @@ int do_inittrapcount(struct proc *caller_ptr, message *m_ptr) {
  *                                do_gettrapcount                            *
  *===========================================================================*/
 int do_gettrapcount(struct proc *caller_ptr, message *m_ptr) {
-    // m_ptr->m_m1.m1ull1 = kernel_calls;
-    m_ptr->m_m1.m1ull1 = 37707;
+    m_ptr->m_m1.m1ull1 = kernel_calls;
     return (OK);
 }
 
@@ -33,7 +32,6 @@ int do_gettrapcount(struct proc *caller_ptr, message *m_ptr) {
  *                                do_getmsgcount                             *
  *===========================================================================*/
 int do_getmsgcount(struct proc *caller_ptr, message *m_ptr) {
-    // m_ptr->m_m1.m1ull1 = sys_calls + task_calls;
-    m_ptr->m_m1.m1ull1 = 37705;
+    m_ptr->m_m1.m1ull1 = msg_calls;
     return (OK);
 }

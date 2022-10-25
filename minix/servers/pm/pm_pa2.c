@@ -13,8 +13,9 @@
  *				do_gettrapcount				     *
  *===========================================================================*/
 int do_pm_gettrapcount(void) {
-    // uint64_t cnt;
-    // sys_gettrapcount(&cnt);
+    uint64_t cnt;
+    sys_gettrapcount(&cnt);
+    // printf("%llu %d %d\n", cnt, kernel_calls, getKernelCalls());
     // return (int)cnt;
     return kernel_calls;
 }
@@ -22,26 +23,23 @@ int do_pm_gettrapcount(void) {
  *				do_getmsgcount				     *
  *===========================================================================*/
 int do_pm_getmsgcount(void) {
-    // uint64_t cnt;
-    // sys_getmsgcount(&cnt);
+    uint64_t cnt;
+    sys_getmsgcount(&cnt);
+    // printf("%llu %d %d\n", cnt, msg_calls, getMsgCalls());
     // return (int)cnt;
-    return sys_calls + task_calls;
+    return msg_calls;
 }
 /*===========================================================================*
  *				do_resettrapcount				     *
  *===========================================================================*/
 int do_pm_resettrapcount(void) {
-    enable_counter = 1;
-    kernel_calls = 0;
-    return 0;
+    return kernel_calls = 0;
     // return sys_inittrapcount();
 }
 /*===========================================================================*
  *				do_resetmsgcount				     *
  *===========================================================================*/
 int do_pm_resetmsgcount(void) {
-    sys_calls = 0;
-    task_calls = 0;
-    return 0;
+    return msg_calls = 0;
     // return sys_initmsgcount();
 }

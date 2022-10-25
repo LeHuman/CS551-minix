@@ -22,11 +22,6 @@
 #include <minix/endpoint.h>
 #include <minix/ipc.h>
 
-EXTERN int kernel_calls;
-EXTERN int sys_calls;
-EXTERN int task_calls;
-EXTERN int enable_counter;
-
 struct minix_kerninfo *get_minix_kerninfo(void);
 
 vir_bytes minix_get_user_sp(void);

@@ -46,6 +46,7 @@
         "random": "c",
         "pa2.h": "c",
         "u64.h": "c",
-        "sigtypes.h": "c"
+        "sigtypes.h": "c",
+        "ipcconst.h": "c"
     }
 }

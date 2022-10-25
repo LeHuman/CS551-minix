@@ -33,4 +33,5 @@
 #define IPC_STATUS_FLAGS(flgs)	((flgs) << IPC_STATUS_FLAGS_SHIFT)
 #define IPC_STATUS_FLAGS_TEST(status, flgs)	\
 		(((status) >> IPC_STATUS_FLAGS_SHIFT) & (flgs))
+
 #endif /* IPC_CONST_H */

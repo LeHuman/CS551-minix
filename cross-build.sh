@@ -1,1 +1,1 @@
-JOBS=12 HOST_CFLAGS=-fcommon ./releasetools/x86_ramimage.sh
+JOBS=12 HOST_LDFLAGS=-ltermcap HOST_CFLAGS=-fcommon ./releasetools/x86_ramimage.sh

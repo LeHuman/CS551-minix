@@ -160,12 +160,11 @@ int main(int argc, char *argv[]) {
     //         printf("Msgs:  %i\n", mc);
     //     }
     // }
-
-    if (argc >= 2) {
+    if (argc >= 3) {
+        test();
+    } else if (argc >= 2) {
         reset_msg_count();
         reset_trap_count();
-    } else if (argc >= 3) {
-        test();
     } else {
         int tc = get_trap_count();
         int mc = get_msg_count();

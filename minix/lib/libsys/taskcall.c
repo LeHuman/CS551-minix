@@ -3,10 +3,7 @@
  * VFS.
  */
 #include <lib.h>
-
 #include <minix/syslib.h>
-
-int task_calls = 13372;
 
 int _taskcall(who, syscallnr, msgptr)
 endpoint_t who;
@@ -16,7 +13,6 @@ register message *msgptr;
     int status;
 
     msgptr->m_type = syscallnr;
-    task_calls++;
     status = ipc_sendrec(who, msgptr);
     if (status != 0)
         return (status);

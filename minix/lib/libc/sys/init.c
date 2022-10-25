@@ -2,6 +2,16 @@
 #include <stdio.h>
 #include <minix/ipc.h>
 
+int kernel_calls = 0;
+int msg_calls = 0;
+
+int getKernelCalls() {
+    return kernel_calls;
+}
+int getMsgCalls() {
+    return msg_calls;
+}
+
 /* Minix kernel info, IPC functions pointers */
 struct minix_kerninfo *_minix_kerninfo = NULL;
 
