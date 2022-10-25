@@ -2,7 +2,6 @@
 
 #include "kernel/system.h"
 #include <minix/endpoint.h>
-#include <minix/ipc.h>
 
 /*===========================================================================*
  *                                do_initmsgcount                            *

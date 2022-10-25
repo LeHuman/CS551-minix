@@ -114,9 +114,9 @@ static int kernel_call_dispatch(struct proc * caller, message *msg)
 	  result = ECALLDENIED;			/* illegal message type */
   } else {
 	  /* handle the system call */
-	  if (call_vec[call_nr])
+	  if (call_vec[call_nr]){
 		  result = (*call_vec[call_nr])(caller, msg);
-	  else {
+	  }else {
 		  printf("Unused kernel call %d from %d\n",
 				  call_nr, caller->p_endpoint);
 		  result = EBADREQUEST;
@@ -135,6 +135,7 @@ static int kernel_call_dispatch(struct proc * caller, message *msg)
  */
 void kernel_call(message *m_user, struct proc * caller)
 {
+  kernel_calls++;
   int result = OK;
   message msg;
 
@@ -158,7 +159,6 @@ void kernel_call(message *m_user, struct proc * caller)
 
   /* remember who invoked the kcall so we can bill it its time */
   kbill_kcall = caller;
-
   kernel_call_finish(caller, &msg, result);
 }
 

@@ -18,6 +18,9 @@
 #include "config.h"
 #include "debug.h"
 
+EXTERN int kernel_calls;
+EXTERN int msg_calls;
+
 /* Kernel information structures. This groups vital kernel information. */
 extern struct kinfo kinfo;		  /* kernel information for services */
 extern struct machine machine;		  /* machine info for services */

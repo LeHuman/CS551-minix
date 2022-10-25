@@ -7,9 +7,6 @@
 #include <sys/signal.h>
 #include <sys/types.h>
 
-extern int kernel_calls;
-extern int msg_calls;
-
 /*==========================================================================* 
  * Types relating to messages. 						    *
  *==========================================================================*/ 
@@ -2802,7 +2799,6 @@ extern struct minix_ipcvecs _minix_ipcvecs;
 
 static inline int _ipc_send(endpoint_t dest, message *m_ptr)
 {
-    msg_calls++;
 	return _minix_ipcvecs.send(dest, m_ptr);
 }
 
@@ -2813,7 +2809,6 @@ static inline int _ipc_receive(endpoint_t src, message *m_ptr, int *st)
 
 static inline int _ipc_sendrec(endpoint_t src_dest, message *m_ptr)
 {
-    msg_calls++;
 	return _minix_ipcvecs.sendrec(src_dest, m_ptr);
 }
 
@@ -2829,7 +2824,6 @@ static inline int _ipc_notify(endpoint_t dest)
 
 static inline int _do_kernel_call(message *m_ptr)
 {
-    kernel_calls++;
 	return _minix_ipcvecs.do_kernel_call(m_ptr);
 }
 
@@ -2837,8 +2831,5 @@ static inline int _ipc_senda(asynmsg_t *table, size_t count)
 {
 	return _minix_ipcvecs.senda(table, count);
 }
-
-int getKernelCalls();
-int getMsgCalls();
 
 #endif /* _IPC_H */

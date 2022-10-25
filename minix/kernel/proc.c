@@ -38,6 +38,7 @@
 #include "clock.h"
 #include "spinlock.h"
 #include "arch_proto.h"
+#include "kernel/system.h"
 
 #include <minix/syslib.h>
 
@@ -874,6 +875,7 @@ int mini_send(
   const int flags
 )
 {
+  msg_calls++;
 /* Send a message from 'caller_ptr' to 'dst'. If 'dst' is blocked waiting
  * for this message, copy the message to it and unblock 'dst'. If 'dst' is
  * not waiting at all, or is waiting for another source, queue 'caller_ptr'.

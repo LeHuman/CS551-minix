@@ -47,6 +47,14 @@
         "pa2.h": "c",
         "u64.h": "c",
         "sigtypes.h": "c",
-        "ipcconst.h": "c"
+        "ipcconst.h": "c",
+        "__bit_reference": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "hash_map": "c",
+        "map": "c",
+        "set": "c",
+        "unordered_map": "c",
+        "unordered_set": "c"
     }
 }
