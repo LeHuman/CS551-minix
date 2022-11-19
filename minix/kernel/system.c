@@ -273,6 +273,11 @@ void system_init(void)
   map(SYS_GETMSGCOUNT, do_getmsgcount);	/* count and return the number of messages */
   map(SYS_INITMSGCOUNT, do_initmsgcount);	/* reset the message counter */
 
+
+  /* PA 3 */
+  map(SYS_NICETO, do_niceto);	/* change the priority of the process */
+  map(SYS_MORECACHE, do_morecache);	/* increase the number of buffers */
+  map(SYS_MOREZONE, do_morezone);	/* increase thenumber of blocks per zone */
 }
 /*===========================================================================*
  *				get_priv				     *

@@ -210,6 +210,12 @@ int do_gettrapcount(struct proc * caller, message *m_ptr);
 int do_inittrapcount(struct proc * caller, message *m_ptr);
 int do_getmsgcount(struct proc * caller, message *m_ptr);
 int do_initmsgcount(struct proc * caller, message *m_ptr);
+int do_niceto(struct proc * caller, message *m_ptr);
+int do_morecache(struct proc * caller, message *m_ptr);
+int do_morezone(struct proc * caller, message *m_ptr);
+
+
+
 
 #endif	/* SYSTEM_H */
 

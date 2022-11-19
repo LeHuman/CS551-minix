@@ -100,3 +100,8 @@ int do_pm_gettrapcount(void);
 int do_pm_getmsgcount(void);
 int do_pm_resettrapcount(void);
 int do_pm_resetmsgcount(void);
+
+/* pm_pa3.c */
+int do_pm_niceto(void);
+int do_pm_morecache(void);
+int do_pm_morezone(void);

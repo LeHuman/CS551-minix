@@ -272,9 +272,13 @@
 #  define SYS_GETMSGCOUNT    (KERNEL_CALL + 60)      /* sys_getmsgcount() */
 #  define SYS_INITMSGCOUNT   (KERNEL_CALL + 61)      /* sys_initmsgcount() */
 
+/* PA 3 */
+#  define SYS_NICETO    (KERNEL_CALL + 62)      /* sys_niceto() */
+#  define SYS_MORECACHE    (KERNEL_CALL + 63)      /* sys_morecache() */
+#  define SYS_MOREZONE    (KERNEL_CALL + 64)      /* sys_morezone() */
 
 /* Total */
-#define NR_SYS_CALLS	62	/* number of kernel calls */
+#define NR_SYS_CALLS	65	/* number of kernel calls */
 
 #define SYS_CALL_MASK_SIZE BITMAP_CHUNKS(NR_SYS_CALLS)
 

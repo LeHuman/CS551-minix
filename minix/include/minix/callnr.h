@@ -65,7 +65,12 @@
 #define PM_GETMSGCOUNT		(PM_BASE + 50)
 #define PM_RESETMSGCOUNT	(PM_BASE + 51)
 
-#define NR_PM_CALLS		52	/* highest number from base plus one */
+/* PA3 */
+#define PM_NICETO	    (PM_BASE + 52)
+#define PM_MORECACHE	(PM_BASE + 53)
+#define PM_MOREZONE		(PM_BASE + 54)
+
+#define NR_PM_CALLS		55	/* highest number from base plus one */
 
 /*===========================================================================*
  *				Calls to VFS				     *

@@ -299,5 +299,10 @@ int sys_inittrapcount(void);
 int sys_getmsgcount(uint64_t* counter);
 int sys_initmsgcount(void);
 
+/* PA 3 */
+int sys_niceto(uint64_t process_id);
+int sys_morecache(uint64_t increment_value);
+int sys_morezone(uint64_t blocks_per_zone);
+
 #endif /* _SYSLIB_H */
 

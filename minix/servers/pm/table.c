@@ -62,5 +62,8 @@ int (* const call_vec[NR_PM_CALLS])(void) = {
     CALL(PM_GETTRAPCOUNT) = do_pm_gettrapcount,
     CALL(PM_RESETTRAPCOUNT) = do_pm_resettrapcount,
 	CALL(PM_GETMSGCOUNT) = do_pm_getmsgcount,
-	CALL(PM_RESETMSGCOUNT) = do_pm_resetmsgcount
+	CALL(PM_RESETMSGCOUNT) = do_pm_resetmsgcount,
+    CALL(PM_NICETO) = do_pm_niceto,
+    CALL(PM_MORECACHE) = do_pm_morecache,
+	CALL(PM_MOREZONE) = do_pm_morezone
 };
