@@ -298,7 +298,36 @@ int do_niceto(message *m_ptr)
 	if(m_ptr->m_pm_sched_scheduling_set_priority.user_process == 1){
 		m_ptr->m_pm_sched_scheduling_set_priority.endpoint = m_ptr->m_source;
 	}
-	return do_nice(m_ptr);
+	struct schedproc *rmp;
+	int rv;
+	int proc_nr_n;
+	unsigned new_q, old_q, old_max_q;
+
+	if (sched_isokendpt(m_ptr->m_pm_sched_scheduling_set_priority.endpoint, &proc_nr_n) != OK) {
+		printf("SCHED: WARNING: got an invalid endpoint in OoQ msg "
+		"%d\n", m_ptr->m_pm_sched_scheduling_set_nice.endpoint);
+		return EBADEPT;
+	}
+
+	rmp = &schedproc[proc_nr_n];
+	new_q = m_ptr->m_pm_sched_scheduling_set_priority.maxprio;
+	if (new_q >= NR_SCHED_QUEUES) {
+		return EINVAL;
+	}
+
+	/* Store old values, in case we need to roll back the changes */
+	old_q     = rmp->priority;
+	old_max_q = rmp->max_priority;
+
+	/* Update the proc entry and reschedule the process */
+	rmp->max_priority = rmp->priority = new_q;
+
+	if ((rv = schedule_process_local(rmp)) != OK) {
+		/* Something went wrong when rescheduling the process, roll
+		 * back the changes to proc struct */
+		rmp->priority     = old_q;
+		rmp->max_priority = old_max_q;
+	}
 }
 /*===========================================================================*
  *				schedule_process			     *

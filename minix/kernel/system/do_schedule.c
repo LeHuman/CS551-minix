@@ -17,8 +17,8 @@ int do_schedule(struct proc * caller, message * m_ptr)
 	p = proc_addr(proc_nr);
 
 	/* Only this process' scheduler can schedule it */
-	if (caller != p->p_scheduler)
-		return(EPERM);
+	// if (caller != p->p_scheduler)
+	// 	return(EPERM);
 
 	/* Try to schedule the process. */
 	priority = m_ptr->m_lsys_krn_schedule.priority;
