@@ -328,6 +328,7 @@ int do_niceto(message *m_ptr)
 		rmp->priority     = old_q;
 		rmp->max_priority = old_max_q;
 	}
+	return rv;
 }
 /*===========================================================================*
  *				schedule_process			     *
