@@ -1445,6 +1445,14 @@ typedef struct {
 _ASSERT_MSG_SIZE(mess_lsys_sched_scheduling_stop);
 
 typedef struct {
+	endpoint_t endpoint;
+	int priority;
+
+	uint8_t padding[48];
+} mess_lsys_sched_set_priority;
+_ASSERT_MSG_SIZE(mess_lsys_sched_set_priority);
+
+typedef struct {
 	int request;
 	int fkeys;
 	int sfkeys;
@@ -1826,6 +1834,15 @@ typedef struct {
 	uint8_t padding[48];
 } mess_pm_sched_scheduling_set_nice;
 _ASSERT_MSG_SIZE(mess_pm_sched_scheduling_set_nice);
+
+typedef struct {
+	endpoint_t endpoint;
+	uint32_t maxprio;
+	uint8_t user_process;
+
+	uint8_t padding[47];
+} mess_pm_sched_scheduling_set_priority;
+_ASSERT_MSG_SIZE(mess_pm_sched_scheduling_set_priority);
 
 typedef struct {
 	dev_t dev;
@@ -2567,6 +2584,7 @@ typedef struct noxfer_message {
 		mess_lsys_pm_srv_fork	m_lsys_pm_srv_fork;
 		mess_lsys_sched_scheduling_start m_lsys_sched_scheduling_start;
 		mess_lsys_sched_scheduling_stop m_lsys_sched_scheduling_stop;
+		mess_lsys_sched_set_priority m_lsys_sched_set_priority;
 		mess_lsys_tty_fkey_ctl	m_lsys_tty_fkey_ctl;
 		mess_lsys_vfs_copyfd	m_lsys_vfs_copyfd;
 		mess_lsys_vfs_mapdriver	m_lsys_vfs_mapdriver;
@@ -2610,6 +2628,7 @@ typedef struct noxfer_message {
 		mess_pm_lsys_proc_event	m_pm_lsys_proc_event;
 		mess_pm_lsys_sigs_signal m_pm_lsys_sigs_signal;
 		mess_pm_sched_scheduling_set_nice m_pm_sched_scheduling_set_nice;
+		mess_pm_sched_scheduling_set_priority m_pm_sched_scheduling_set_priority;
 		mess_pty_ptyfs_req	m_pty_ptyfs_req;
 		mess_ptyfs_pty_name	m_ptyfs_pty_name;
 		mess_readclock_lc_rtcdev m_readclock_lc_rtcdev;

@@ -290,7 +290,16 @@ int do_nice(message *m_ptr)
 
 	return rv;
 }
-
+/*===========================================================================*
+ *				do_niceto					     *
+ *===========================================================================*/
+int do_niceto(message *m_ptr)
+{
+	if(m_ptr->m_pm_sched_scheduling_set_priority.user_process == true){
+		m_ptr->m_pm_sched_scheduling_set_priority.endpoint = m_ptr->m_source;
+	}
+	return do_nice(m_ptr);
+}
 /*===========================================================================*
  *				schedule_process			     *
  *===========================================================================*/

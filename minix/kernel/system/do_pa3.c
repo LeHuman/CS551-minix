@@ -1,19 +1,32 @@
 #include "kernel/system.h"
 #include <minix/endpoint.h>
+#include "kernel/clock.h"
 
 /*===========================================================================*
  *                                do_niceto                            *
  *===========================================================================*/
 int do_niceto(struct proc *caller_ptr, message *m_ptr) {
-    //msg_calls = 0;
-    return (OK);
+	struct proc *p;
+	int proc_nr;
+	int priority, quantum, cpu;
+
+	if (!isokendpt(m_ptr->m_lsys_krn_schedule.endpoint, &proc_nr))
+		return EINVAL;
+
+	p = proc_addr(proc_nr);
+
+	/* Try to schedule the process. */
+	priority = m_ptr->m_lsys_krn_schedule.priority;
+	quantum = p->p_quantum_size_ms;
+	cpu = p->p_cpu;
+
+	return sched_proc(p, priority, quantum, cpu, 0);
 }
 
 /*===========================================================================*
  *                                do_morecache                           *
  *===========================================================================*/
 int do_morecache(struct proc *caller_ptr, message *m_ptr) {
-    //kernel_calls = 0;
     return (OK);
 }
 
