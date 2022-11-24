@@ -1011,3 +1011,25 @@ fsdriver_flush(const struct fsdriver * __restrict fdp,
 
 	return OK;
 }
+
+int fsdriver_buf_add(const struct fsdriver *__restrict fdp, const message *__restrict m_in, message *__restrict __unused m_out) {
+    size_t bufs;
+
+    bufs = m_in->m_m1.m1ull1;
+
+    if (fdp->fdr_pa3_block_size != NULL)
+        fdp->fdr_pa3_block_size(bufs);
+
+    return OK;
+}
+
+int fsdriver_zone_add(const struct fsdriver *__restrict fdp, const message *__restrict m_in, message *__restrict __unused m_out) {
+    ino_t sz;
+
+    sz = m_in->m_m1.m1ull1;
+
+    if (fdp->fdr_pa3_buffers != NULL)
+        fdp->fdr_pa3_buffers(sz);
+
+    return OK;
+}

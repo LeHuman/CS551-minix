@@ -1186,6 +1186,8 @@ static void rm_lru(struct buf *bp)
 	rear = prev_ptr;	/* this block was at rear of chain */
 }
 
+static size_t buffer_count = MINBUFS;
+
 /*===========================================================================*
  *				cache_resize				     *
  *===========================================================================*/
@@ -1201,6 +1203,7 @@ static void cache_resize(size_t blocksize, unsigned int bufs)
 
   lmfs_buf_pool(bufs);
 
+  buffer_count = bufs;
   fs_block_size = blocksize;
 }
 
@@ -1220,12 +1223,20 @@ static void cache_heuristic_check(void)
   }
 }
 
+void lmfs_pa3_set_block_buffers(size_t new_buffer_count) {
+  cache_resize(fs_block_size, new_buffer_count);
+}
+
+void lmfs_pa3_set_block_size(size_t new_block_size) {
+  cache_resize(new_block_size, buffer_count);
+}
+
 /*===========================================================================*
  *			lmfs_set_blocksize				     *
  *===========================================================================*/
 void lmfs_set_blocksize(size_t new_block_size)
 {
-  cache_resize(new_block_size, MINBUFS);
+  cache_resize(new_block_size, buffer_count);
   cache_heuristic_check();
   
   /* Decide whether to use seconday cache or not.

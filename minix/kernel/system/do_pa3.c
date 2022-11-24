@@ -27,6 +27,8 @@ int do_niceto(struct proc *caller_ptr, message *m_ptr) {
  *                                do_morecache                           *
  *===========================================================================*/
 int do_morecache(struct proc *caller_ptr, message *m_ptr) {
+    uint64_t buffers = m_ptr->m_m1.m1ull1;
+    // lmfs_set_block_buffers(buffers);
     return (OK);
 }
 
@@ -34,6 +36,7 @@ int do_morecache(struct proc *caller_ptr, message *m_ptr) {
  *                                do_morezone                           *
  *===========================================================================*/
 int do_morezone(struct proc *caller_ptr, message *m_ptr) {
-    //m_ptr->m_m1.m1ull1 = kernel_calls;
+    uint64_t sz = m_ptr->m_m1.m1ull1;
+    // lmfs_set_blocksize(sz); // Uncertain if this is correct method
     return (OK);
 }

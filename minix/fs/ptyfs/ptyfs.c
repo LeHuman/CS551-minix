@@ -416,7 +416,9 @@ static struct fsdriver ptyfs_table = {
 	.fdr_chown	= ptyfs_chown,
 	.fdr_chmod	= ptyfs_chmod,
 	.fdr_statvfs	= ptyfs_statvfs,
-	.fdr_other	= ptyfs_other
+	.fdr_other	= ptyfs_other,
+    .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
+    .fdr_pa3_block_size = lmfs_pa3_set_block_size,
 };
 
 /*

@@ -28,5 +28,7 @@ struct fsdriver isofs_table = {
 #if 0 /* FIXME: isofs uses subpage block sizes */
 	.fdr_bpeek	= lmfs_bio,
 #endif
-	.fdr_bflush	= lmfs_bflush
+	.fdr_bflush	= lmfs_bflush,
+    .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
+    .fdr_pa3_block_size = lmfs_pa3_set_block_size,
 };

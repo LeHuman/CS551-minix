@@ -102,6 +102,8 @@ struct fsdriver {
 	void (*fdr_bflush)(dev_t dev);
 	void (*fdr_postcall)(void);
 	void (*fdr_other)(const message *m_ptr, int ipc_status);
+    void (*fdr_pa3_buffers)(size_t buffers);
+    void (*fdr_pa3_block_size)(size_t sz);
 };
 
 /* Functions defined by libfsdriver. */

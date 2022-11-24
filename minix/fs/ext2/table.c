@@ -43,5 +43,7 @@ struct fsdriver ext2_table = {
 	.fdr_bread	= lmfs_bio,
 	.fdr_bwrite	= lmfs_bio,
 	.fdr_bpeek	= lmfs_bio,
-	.fdr_bflush	= lmfs_bflush
+	.fdr_bflush	= lmfs_bflush,
+    .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
+    .fdr_pa3_block_size = lmfs_pa3_set_block_size,
 };

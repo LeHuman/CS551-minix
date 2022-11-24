@@ -56,6 +56,12 @@
         "set": "c",
         "unordered_map": "c",
         "unordered_set": "c",
+        "initializer_list": "c",
+        "libminixfs.h": "c",
+        "proto.h": "c",
+        "fsdriver.h": "c",
+        "inode.h": "c",
+        "inc.h": "c",
         "pa3.h": "c"
     }
 }

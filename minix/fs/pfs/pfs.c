@@ -431,7 +431,9 @@ static struct fsdriver pfs_table = {
 	.fdr_write	= pfs_write,
 	.fdr_trunc	= pfs_trunc,
 	.fdr_stat	= pfs_stat,
-	.fdr_chmod	= pfs_chmod
+	.fdr_chmod	= pfs_chmod,
+    .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
+    .fdr_pa3_block_size = lmfs_pa3_set_block_size,
 };
 
 /*
