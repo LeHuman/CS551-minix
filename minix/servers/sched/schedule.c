@@ -295,7 +295,7 @@ int do_nice(message *m_ptr)
  *===========================================================================*/
 int do_niceto(message *m_ptr)
 {
-	if(m_ptr->m_pm_sched_scheduling_set_priority.user_process == true){
+	if(m_ptr->m_pm_sched_scheduling_set_priority.user_process == 1){
 		m_ptr->m_pm_sched_scheduling_set_priority.endpoint = m_ptr->m_source;
 	}
 	return do_nice(m_ptr);
