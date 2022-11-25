@@ -34,6 +34,6 @@ struct fsdriver puffs_table = {
 	.fdr_mountpt	= fs_mountpt,
 	.fdr_statvfs	= fs_statvfs,
 	.fdr_sync	= fs_sync,
-    .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
-    .fdr_pa3_block_size = lmfs_pa3_set_block_size,
+    // .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
+    // .fdr_pa3_block_size = lmfs_pa3_set_block_size,
 };

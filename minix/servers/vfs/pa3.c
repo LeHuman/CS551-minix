@@ -1,34 +1,75 @@
-#include "file.h"
 #include "fs.h"
-#include "lock.h"
-#include "path.h"
-#include "vmnt.h"
-#include "vnode.h"
-#include <assert.h>
-#include <fcntl.h>
-#include <minix/callnr.h>
+
 #include <minix/com.h>
+
+#include <minix/const.h>
+
+#include <minix/endpoint.h>
+
 #include <minix/u64.h>
+
 #include <minix/vfsif.h>
-#include <string.h>
+
 #include <sys/dirent.h>
+
 #include <sys/stat.h>
+
+#include <sys/statvfs.h>
+
+#include <assert.h>
+
+#include <stddef.h>
+
+#include <string.h>
+
 #include <unistd.h>
 
+#include <time.h>
+
+#include "path.h"
+
+#include "vmnt.h"
+
+#include "vnode.h"
+
 int do_add_buf(void) {
-    off_t newpos = 0;
-    int r;
+    struct vmnt *vmp;
+    int r = OK;
 
-    if ((r = actual_lseek(fp, job_m_in.m_lc_vfs_lseek.fd,
-                          job_m_in.m_lc_vfs_lseek.whence, job_m_in.m_lc_vfs_lseek.offset,
-                          &newpos)) != OK)
-        return r;
+    for (vmp = &vmnt[0]; vmp < &vmnt[NR_MNTS]; ++vmp) {
+        if ((r = lock_vmnt(vmp, VMNT_READ)) != OK)
+            break;
+        if (vmp->m_dev != NO_DEV && vmp->m_fs_e != NONE && vmp->m_root_node != NULL) {
+            message m;
 
-    /* insert the new position into the output message */
-    job_m_out.m_vfs_lc_lseek.offset = newpos;
-    return OK;
+            m.m_type = REQ_BUF_ADD;
+            m.m_m1.m1ull1 = m_in.m_m1.m1ull1;
+
+            r = fs_sendrec(vmp->m_fs_e, &m);
+        }
+        unlock_vmnt(vmp);
+    }
+
+    return (r);
 }
 
 int do_add_zone(void) {
-    return OK;
+    struct vmnt *vmp;
+    int r = OK;
+
+    for (vmp = &vmnt[0]; vmp < &vmnt[NR_MNTS]; ++vmp) {
+        if ((r = lock_vmnt(vmp, VMNT_READ)) != OK)
+            break;
+        if (vmp->m_dev != NO_DEV && vmp->m_fs_e != NONE && vmp->m_root_node != NULL) {
+            message m;
+
+            m.m_type = REQ_ZONE_ADD;
+            m.m_m1.m1ull1 = m_in.m_m1.m1ull1;
+
+            r = fs_sendrec(vmp->m_fs_e, &m);
+        }
+        unlock_vmnt(vmp);
+    }
+
+    return (r);
 }

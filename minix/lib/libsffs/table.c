@@ -25,6 +25,6 @@ struct fsdriver sffs_dtable = {
 	.fdr_chmod	= do_chmod,
 	.fdr_utime	= do_utime,
 	.fdr_statvfs	= do_statvfs,
-    .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
-    .fdr_pa3_block_size = lmfs_pa3_set_block_size,
+    // .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
+    // .fdr_pa3_block_size = lmfs_pa3_set_block_size,
 };

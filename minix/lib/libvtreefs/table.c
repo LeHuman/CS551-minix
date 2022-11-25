@@ -21,6 +21,6 @@ struct fsdriver vtreefs_table = {
 	.fdr_chown	= fs_chown,
 	.fdr_statvfs	= fs_statvfs,
 	.fdr_other	= fs_other,
-    .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
-    .fdr_pa3_block_size = lmfs_pa3_set_block_size,
+    // .fdr_pa3_buffers = lmfs_pa3_set_block_buffers,
+    // .fdr_pa3_block_size = lmfs_pa3_set_block_size,
 };

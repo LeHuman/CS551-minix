@@ -318,6 +318,8 @@ int do_getsockopt(void);
 int do_getsockname(void);
 int do_getpeername(void);
 int do_shutdown(void);
+int do_add_buf(void);
+int do_add_zone(void);
 
 /* stadir.c */
 int do_chdir(void);
