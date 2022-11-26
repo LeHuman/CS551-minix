@@ -63,6 +63,14 @@
         "inode.h": "c",
         "inc.h": "c",
         "pa3.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "mthread.h": "c",
+        "timers.h": "c",
+        "array": "c",
+        "dynarray": "c",
+        "string_view": "c",
+        "iterator": "c",
+        "string": "c",
+        "vector": "c"
     }
 }

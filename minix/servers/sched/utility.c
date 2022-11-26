@@ -63,6 +63,7 @@ int accept_message(message *m_ptr)
 	/* accept all messages from PM and RS */
 	switch (m_ptr->m_source) {
 
+		case SCHED_PROC_NR:
 		case PM_PROC_NR:
 		case RS_PROC_NR:
 			return 1;

@@ -3,4 +3,6 @@
 
 PROG=	domainname
 
+LDADD+= -lmthread
+
 .include <bsd.prog.mk>
