@@ -2846,6 +2846,7 @@
 ./usr/include/sys/null.h			comp-c-include
 ./usr/include/sys/optstr.h			comp-obsolete		obsolete
 ./usr/include/sys/pa2.h			    comp-c-include
+./usr/include/sys/pa3.h			    comp-c-include
 ./usr/include/sys/param.h			comp-c-include
 ./usr/include/sys/pcu.h				comp-c-include
 ./usr/include/sys/pipe.h			comp-c-include

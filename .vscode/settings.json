@@ -62,6 +62,7 @@
         "fsdriver.h": "c",
         "inode.h": "c",
         "inc.h": "c",
-        "pa3.h": "c"
+        "pa3.h": "c",
+        "stdlib.h": "c"
     }
 }

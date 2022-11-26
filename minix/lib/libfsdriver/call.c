@@ -1017,8 +1017,8 @@ int fsdriver_buf_add(const struct fsdriver *__restrict fdp, const message *__res
 
     bufs = m_in->m_m1.m1ull1;
 
-    if (fdp->fdr_pa3_block_size != NULL)
-        fdp->fdr_pa3_block_size(bufs);
+    if (fdp->fdr_pa3_buffers != NULL)
+        fdp->fdr_pa3_buffers(bufs);
 
     return OK;
 }
@@ -1028,8 +1028,8 @@ int fsdriver_zone_add(const struct fsdriver *__restrict fdp, const message *__re
 
     sz = m_in->m_m1.m1ull1;
 
-    if (fdp->fdr_pa3_buffers != NULL)
-        fdp->fdr_pa3_buffers(sz);
+    if (fdp->fdr_pa3_block_size != NULL)
+        fdp->fdr_pa3_block_size(sz);
 
     return OK;
 }

@@ -1224,10 +1224,12 @@ static void cache_heuristic_check(void)
 }
 
 void lmfs_pa3_set_block_buffers(size_t new_buffer_count) {
+  printf("Buffer sz: %d\n", new_buffer_count);
   cache_resize(fs_block_size, new_buffer_count);
 }
 
 void lmfs_pa3_set_block_size(size_t new_block_size) {
+  printf("Zone sz: %d\n", new_block_size);
   cache_resize(new_block_size, buffer_count);
 }
 
